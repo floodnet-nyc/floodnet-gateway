@@ -8,8 +8,8 @@ We are currently trialing the [MikroTik LtAP LTE kit (RRP: $179)](https://mikrot
 
 For most installations you will be looking for a high gain antenna mounted in an un-occluded spot, as high as possible from the ground and any metal surfaces. This will provide you with more LoRa coverage for your sensors. We have used the [SignalPlus 10dBi antenna (Amazon: $85)](https://www.amazon.com/gp/product/B0927J1DCX) which feels solid, provides decent coverage, and comes with 32ft of rugged looking RG58 antenna cable.
 
-NB1: never power up the gateway without the antenna plugged in, it can fry the LoRa board!
-NB2: always ground yourself properly when touching these LoRa cards as they are sensitive to static shock
+* NB1: never power up the gateway without the antenna plugged in, it can fry the LoRa board!
+* NB2: always ground yourself properly when touching these LoRa cards as they are sensitive to static shock
 
 ## Internet backhaul
 A LoRaWAN gateway needs an internet connection to forward LoRa packets up to network providers such as [The Things Industries](https://www.thethingsindustries.com), which we use for this project. Internet connectivity via Ethernet is recommended for stability with cellular connectivity as a backup. In some cases the ethernet option may not be available so cell can be used but expect more downtime.
