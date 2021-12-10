@@ -19,7 +19,7 @@ We have a cell only gateway deployed in Red Hook that uses an [Embedded Works 64
 ## Gateway setup via Winbox
 We have created a setup script for the gateway that assumes you are running the RouterOS firmware version 6.49.1. This is setup to: create a secured Wi-Fi network for nearby config if needed, establish an LTE connection, setup GPS, set timezone and NTP servers, create a DHCP server for Wi-Fi access IP allocations, set DNS servers to Google defaults, setup LoRaWAN servers for US use, and create a watchdog that restarts the device if a ping times out after 2m to 8.8.8.8.
 
-The setup file can be found here and needs some editing to add in some sensitive info:
+The [setup file can be found here](config/floodnet-ltap-gw-dec-2021.cfg.rsc) and needs some editing to add in some sensitive info:
 
 * Replace `<WIFI-PASSWORD_HERE>` with the secure Wi-Fi password of your choosing
 
