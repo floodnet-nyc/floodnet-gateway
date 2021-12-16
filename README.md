@@ -11,6 +11,9 @@ For most installations you will be looking for a high gain antenna mounted in an
 * NB1: never power up the gateway without the antenna plugged in, it can fry the LoRa board!
 * NB2: always ground yourself properly when touching these LoRa cards as they are sensitive to static shock
 
+## Gateway power consumption
+We have measured the power consumption of the MikroTik LtAP LTE gateway at 12W when running the: LTE module, Wi-Fi, GPS and LoRa module. Its powered using a 24V supply that draws around 500mA. We use a POE injector to push the 24V up CAT5 cabling that can run upto 50ft without an issue of voltage drop.
+
 ## Internet backhaul
 A LoRaWAN gateway needs an internet connection to forward LoRa packets up to network providers such as [The Things Industries](https://www.thethingsindustries.com), which we use for this project. Internet connectivity via Ethernet is recommended for stability with cellular connectivity as a backup. In some cases the ethernet option may not be available so cell can be used but expect more downtime.
 
