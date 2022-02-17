@@ -3,10 +3,15 @@
 <img src="https://www.floodnet.nyc/wp-content/uploads/2021/04/floodnet_logomark-2.png" width="20%" align="right">
 This repository houses all the setup and deployment information for the FloodnNet project's LoRaWAN gateways. Gateway hardware and setups are in flux so could change at any time. We will try and keep this repo up to date buts its advisable to contact info@floodnet.nyc before starting a setup or install in case there are changes to make.
 
+## Summary of deployment needs
+A FloodNet sensor gateway picks up transmissions from our street level flood sensors mounted within around 2 km of the gateway. The gateway can be mounted inside or outside but its 3 foot antenna should be mounted as high as possible outside. Mounting points such as railings or existing vertical poles are needed to ensure the gateway and antenna are securely fastened. The gateway also requires a continuous power source such as a domestic power outlet. It measures 7 x 7 x 2 inches, weighs 1 pound, and consumes around 10 watts of power (similar to a small phone charger).
+
 ## Gateway hardware
 We are currently trialing the [MikroTik LtAP LTE kit (RRP: $179)](https://mikrotik.com/product/ltap_lte_kit) as it provides an in-built: LTE modem that handles US bands with internal antenna, GPS module with internal antenna, and Wi-Fi with internal antenna. There is a spare PCI-E slot inside the MikroTik LtAP LTE kit which allows you to add a [LoRa concentrator card (RRP: $89)](https://mikrotik.com/product/r11e_lr9) to enable it as a LoRaWAN gateway.
 
-For most installations you will be looking for a high gain antenna mounted in an un-occluded spot, as high as possible from the ground and any metal surfaces. This will provide you with more LoRa coverage for your sensors. We have used the [SignalPlus 10dBi antenna (Amazon: $85)](https://www.amazon.com/gp/product/B0927J1DCX) which feels solid, provides decent coverage, and comes with 32ft of rugged looking RG58 antenna cable.
+The gateway 
+
+For most installations you will be looking for a high gain antenna (~3ft in length) mounted in an un-occluded spot, as high as possible from the ground and any metal surfaces. This will provide you with more LoRa coverage for your sensors. We have used the [SignalPlus 10dBi antenna (Amazon: $85)](https://www.amazon.com/gp/product/B0927J1DCX) which feels solid, provides decent coverage, and comes with 32ft of rugged looking RG58 antenna cable.
 
 * NB1: never power up the gateway without the antenna plugged in, it can fry the LoRa board!
 * NB2: always ground yourself properly when touching these LoRa cards as they are sensitive to static shock
