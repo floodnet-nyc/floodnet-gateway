@@ -25,8 +25,6 @@ We have a cell only gateway deployed in Red Hook that uses an [Embedded Works 64
 ## Gateway setup via Winbox
 We have created a setup script for the gateway that assumes you are running the RouterOS firmware version 7.6. This is setup to: create a secured Wi-Fi network for nearby config if needed, establish an LTE connection, setup GPS, set timezone and NTP servers, create a DHCP server for Wi-Fi access IP allocations, set DNS servers to Google defaults, setup LoRaWAN servers for US use, and create a watchdog that restarts the device if a ping times out after 2 minutes to 8.8.8.8.
 
-
-
 The [setup file can be found here](config/RouterOS-7-6-nov-14-2022.cfg.rsc). We have used macs to set these up so use the [WinBox for Mac port](https://github.com/nrlquaker/winbox-mac).
 
 1. Plug in the factory default Mikrotik LtAP LTE kit
@@ -36,10 +34,11 @@ The [setup file can be found here](config/RouterOS-7-6-nov-14-2022.cfg.rsc). We 
 5. Install the Lora package by [downloading this](https://download.mikrotik.com/routeros/7.6/all_packages-mmips-7.6.zip) and [installing according to this](https://systemzone.net/how-to-install-extra-packages-in-mikrotik)
 6. Follow the [instructions here](https://jcutrer.com/howto/networking/mikrotik/mikrotik-backup-and-restore) under the heading: `Text Config Restore .rsc Text File`
 
-When the gateway has had the confiusrtion script run on it there is some additional setup to get things working that you do using the WinBox GUI:
+When the gateway has had the configuration script run on it there is some additional setup to get things working that you do using the WinBox GUI:
 
 - Add in a WPA2 based Wi-Fi security profile and add to the wlan0 interface
 - Rename the Lora device based on the EUI of the Lora concentrator card
+- Add the gateway on The Things Network using [these instructions](https://www.thethingsindustries.com/docs/gateways/concepts/adding-gateways/)
 
 ## Rain gauge setup (TODO)
 
