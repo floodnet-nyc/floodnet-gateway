@@ -22,25 +22,46 @@ A LoRaWAN gateway needs an internet connection to forward LoRa packets up to net
 
 We have a cell only gateway deployed in Red Hook that uses an [Embedded Works 64kbps unlimited SIM (RRP: $48/12months)](https://www.embeddedworks.net/wsim4827). This can handle the LoRaWAN traffic easily within its throttled 64kbps bandwidth. One downside is that its only valid for 12 months so would need annual subscription updates.
 
-## Gateway setup via Winbox
-We have created a setup script for the gateway that assumes you are running the RouterOS firmware version 7.6. This is setup to: create a secured Wi-Fi network for nearby config if needed, establish an LTE connection, setup GPS, set timezone and NTP servers, create a DHCP server for Wi-Fi access IP allocations, set DNS servers to Google defaults, setup LoRaWAN servers for US use, and create a watchdog that restarts the device if a ping times out after 2 minutes to 8.8.8.8.
+## Adding Quectel EC25-A LTE modem
+TODO
 
-The [setup file can be found here](config/RouterOS-7-6-nov-14-2022.cfg.rsc). We have used macs to set these up so use the [WinBox for Mac port](https://github.com/nrlquaker/winbox-mac).
+## Adding Mikrotik R11e-LR9 LoRa concentrator
+TODO
 
-1. Plug in the factory default Mikrotik LtAP LTE kit
-2. Connect to its open Wi-Fi network
-3. Connect to it using `192.168.88.1` with user `admin` and leave the password field empty
-4. [Upgrade/downgrade firmware](https://wiki.mikrotik.com/wiki/Manual:Upgrading_RouterOS) to match the config files 7.6
-5. Install the Lora package by [downloading this](https://download.mikrotik.com/routeros/7.6/all_packages-mmips-7.6.zip) and [installing according to this](https://systemzone.net/how-to-install-extra-packages-in-mikrotik)
-6. Follow the [instructions here](https://jcutrer.com/howto/networking/mikrotik/mikrotik-backup-and-restore) under the heading: `Text Config Restore .rsc Text File`
+## Gateway mod to power Hydreon RG-15 rain gauge
+To provide power to the rain gauge the LtAP router must be modded to allow power to flow out of the square automotive `PWR` pin. Usually when powering the router via PoE or the barrel jack, this voltage runs through a set of diodes to block any return voltage flowing through the other power input ports, in this case the automotive port. We want to bypass this diode to allow power to flow. This means that you *cannot* input power using the automotive port *and* any of the other power input ports as this will damage the router and your power source. 
 
-When the gateway has had the configuration script run on it there is some additional setup to get things working that you do using the WinBox GUI:
+<img src="" width="30%">
 
-- Add in a WPA2 based Wi-Fi security profile and add to the wlan0 interface
-- Rename the Lora device based on the EUI of the Lora concentrator card
-- Add the gateway on The Things Network using [these instructions](https://www.thethingsindustries.com/docs/gateways/concepts/adding-gateways/)
+You will need to remove all six rear screws on the back plate of the router and carefully lift the top (non port side) up, leaving the port side of the housing close to the ports as the cellular antenna cable routing forces this motion. Then solder a small bridge wire across `D108` located nearby the automotive power port. This could be fiddly so an alternative is to remove `D108` and use a jumper wire or solder bridge to connect the two pads. See image above for a completed mod (TODO: add image).
 
-## Rain gauge setup (TODO)
+The rain gauge repo contains instructions on how to setup and assemble the Hydreon RG-15 for use with FloodNet (TODO: create and add repo link).
+
+## Watchdog scripts
+TODO
+
+## Gateway setup using a Mac
+This is setup to: create a secured Wi-Fi network for nearby config if needed, establish an LTE connection, setup GPS, set timezone and NTP servers, create a DHCP server for Wi-Fi access IP allocations, create a DHCP client for the ethernet interface, set DNS servers to Google defaults, setup LoRaWAN servers for US use, and create a watchdog that restarts the device if a ping times out after 10 minutes to 8.8.8.8.
+
+The [setup file can be found here](config/confscript.rsc). We have used macs to set these up so use the [WinBox for Mac port](https://github.com/nrlquaker/winbox-mac).
+
+1. Insert SIM card in slot 2
+2. Plug in the Mikrotik LtAP router using the supplied PSU *or* use a 19-30V passive PoE supply
+3. Edit the `config/confscript.rsc` script replacing any instances of `<ADMIN-PASSWORD>` (the password used to access the router for config) and `<WIFI-PASSWORD>` (the password used to connect to the router's Wi-Fi network) with your passwords of choice - *NB: DO NOT GIT COMMIT THE `config/confscript.rsc` FILE WITH THESE PASSWORDS INCLUDED*
+3. Connect to the router's open Wi-Fi network using the `<WIFI-PASSWORD>` previously chosen
+4. Open up a terminal and run the following line by line:
+```
+cd <dir you store your repos>/floodnet-gateway/config
+scp *.npk admin@192.168.88.1: #Copy updated firmware files to router
+ssh admin@192.168.88.1 '/system reboot' #Reboot after update
+ssh admin@192.168.88.1 '/system routerboard upgrade' #Update RouterBOARD firmware 
+ssh admin@192.168.88.1 '/system reboot' #After device is running after previous reboot, repeat to ensure LTE device is recognized
+scp confscript.rsc admin@192.168.88.1:flash #Copy config script to flash dir of router
+ssh admin@192.168.88.1 '/system reset-configuration run-after-reset=flash/confscript.rsc' #Reset router applying custom config
+```
+5. Add the gateway on The Things Network using [these instructions](https://www.thethingsindustries.com/docs/gateways/concepts/adding-gateways/)
+
+## Rain gauge setup (TODO IN SEPARATE REPO)
 
 ## Power monitoring setup (TODO)
 
