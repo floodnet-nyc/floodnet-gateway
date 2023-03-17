@@ -8,6 +8,10 @@ set [ find default-name=lte1 ] allow-roaming=no disabled=no network-mode=lte
 /interface lte apn
 set [ find default=yes ] apn=m2mglobal name=default
 
+# Force APN to m2mglobal
+ /interface lte at-chat lte1 input="AT+CGDCONT=\?"
+ /interface lte at-chat lte1 input="AT+CGDCONT=1,\"IP\",\"m2mglobal\""
+
 # Set timezone to NY
 /system clock
 set time-zone-name=America/New_York
