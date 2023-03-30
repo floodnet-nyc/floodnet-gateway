@@ -11,6 +11,10 @@ set [ find default=yes ] apn=m2mglobal name=default
 # Force APN to m2mglobal
  /interface lte at-chat lte1 input="AT+CGDCONT=\?"
  /interface lte at-chat lte1 input="AT+CGDCONT=1,\"IP\",\"m2mglobal\""
+ 
+# Remove tethering bandwidth limits
+/ip firewall mangle
+add action=change-ttl chain=postrouting new-ttl=set:65 out-interface=lte1 passthrough=yes
 
 # Set timezone to NY
 /system clock
@@ -153,7 +157,7 @@ add action=masquerade chain=srcnat comment="defconf: masquerade" disabled=yes \
 
 # Turn on general internet watchdog reboots device if 8.8.8.8 is not accessible after 10 minutes
 /system watchdog
-set ping-start-after-boot=10m ping-timeout=2m watch-address=8.8.8.8
+set ping-start-after-boot=10m ping-timeout=10m watch-address=8.8.8.8
 
 # Add 10 minute internet check scheduler script to favor internet over ethernet or LTE if none on ethernet
 # Add 10 second LoRa watchdog that checks the LoRa card and brings it back up if its disabled
