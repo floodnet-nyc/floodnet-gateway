@@ -104,6 +104,8 @@ add address=nam1.cloud.thethings.network down-port=1700 name="TTN V3 (nam1)" \
     up-port=1700
 
 # Set R11e-LR9 config and assign US TTN LoRa servers
+/lora disable 0
+:delay 10s
 /lora
 set 0 antenna=uFL disabled=no name="floodnet-ltap-gw-$[:put [/lora get 0 hardware-id]]" \
 servers="TTN V3 (nam1),TTN-US,TTS Cloud (nam1)"
