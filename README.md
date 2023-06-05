@@ -73,6 +73,75 @@ ssh admin@192.168.88.1 '/system reset-configuration run-after-reset=flash/confsc
 <img src="img/antenna-view.jpg" width="100%">
 <img src="img/rain-gauge.jpg" width="100%">
 
+## Deployment equipment list
+Every deployment situation is different so the trick is to bring equipment for every eventuality. It is recommended to bring the following which should enable mounting on most available roof infrastructure. This list is likely missing things so please add anything that you need on-site.
+
+### Config
+- [ ] Laptop with Winbox installed (charged) & PSU
+- [ ] Ethernet patch cable (for debugging)
+- [ ] Dongle with USB & ethernet port
+- [ ] Fully-charged mobile phone with MikroTik app installed & charger
+
+### Gateway mounting
+- [ ] Gateway assembly (pre-configured)
+- [ ] 3ft aluminum pole
+- [ ] 6ft aluminum pole
+- [ ] 2X Pipe to pipe mount (small)
+- [ ] 2X Pipe to pipe mount (large)
+- [ ] 2X Pipe to pipe mount (right angled)
+- [ ] Large diameter hose clamps
+- [ ] Small diameter hose clamps
+- [ ] Metal band kit inc. tightening/cutting tool and fasteners
+- [ ] Masonry screws
+
+### Misc mounting
+- [ ] Various L brackets (with holes)
+- [ ] Various nut and bolts
+
+
+### Cabling
+- [ ] POE adapter and power cable
+- [ ] Outdoor power connector housing (pill box)
+- [ ] Outdoor rated CAT5e cable
+- [ ] RJ45 connectors
+- [ ] Zip-ties
+- [ ] Ethernet cable tester
+- [ ] Cable stripper
+- [ ] Ethernet cable crimper
+- [ ] Scissors
+- [ ] Cable staples
+- [ ] Tape measure
+
+### Tools
+- [ ] Hex socket drill bits (3/8” for hose clamps)
+- [ ] Philips screwdriver large & small
+- [ ] Flathead screwdriver large & small
+- [ ] Ratcheting wrench set
+- [ ] Electric screwdriver
+- [ ] Bit set for electric screwdriver
+- [ ] Needle nose pliers
+- [ ] Large masonry drill
+- [ ] Masonry bits
+- [ ] Small electric drill
+- [ ] Drill bit set
+
+### Misc
+- [ ] Electrical tape
+- [ ] Duct tape
+- [ ] Rubberized waterproof sealant
+- [ ] Red double sided mounting tape
+- [ ] Small garbage bag
+- [ ] Backpack
+- [ ] Community engagement flyers
+- [ ] Safety Glasses
+- [ ] Thin work gloves
+- [ ] Sunblock and hat (in summer)
+- [ ] Cold weather apparel (in winter)
+- [ ] Water and a snack
+- [ ] First aid kit
+- [ ] 4 way power strip
+
+
 ------------------------------------------------------------------------------------------------------------------------
 Shield: [![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
 
