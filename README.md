@@ -77,7 +77,7 @@ ssh admin@192.168.88.1 '/system reset-configuration run-after-reset=flash/confsc
 Every deployment situation is different so the trick is to bring equipment for every eventuality. It is recommended to bring the following which should enable mounting on most available roof infrastructure. This list is likely missing things so please add anything that you need on-site.
 
 ### Config
-- [ ] Laptop with Winbox installed (charged) & PSU
+- [ ] Laptop with Winbox installed (charged), laptop cover & PSU
 - [ ] Ethernet patch cable (for debugging)
 - [ ] Dongle with USB & ethernet port
 - [ ] Fully-charged mobile phone with MikroTik app installed & charger
@@ -111,6 +111,7 @@ Every deployment situation is different so the trick is to bring equipment for e
 - [ ] Scissors
 - [ ] Cable staples
 - [ ] Tape measure
+- [ ] Laser measure
 
 ### Tools
 - [ ] Hex socket drill bits (3/8” for hose clamps)
@@ -139,6 +140,7 @@ Every deployment situation is different so the trick is to bring equipment for e
 - [ ] Cold weather apparel (in winter)
 - [ ] Water and a snack
 - [ ] First aid kit
+- [ ] Sunglasses
 - [ ] 4 way power strip
 
 
