@@ -45,6 +45,8 @@ This is setup to: create a secured Wi-Fi network for nearby config if needed, es
 
 The [setup file can be found here](config/confscript.rsc). We have used macs to set these up so use the [WinBox for Mac port](https://github.com/nrlquaker/winbox-mac).
 
+Before we start make sure there are no entries containing the IP address `192.168.88.1` in your `~/.ssh/known_hosts` file. If there are delete that line.
+
 1. Insert SIM card in slot 2
 2. Plug in the Mikrotik LtAP router using the supplied PSU *or* use a 19-30V passive PoE supply
 3. Edit the `config/confscript.rsc` script replacing any instances of `<ADMIN-PASSWORD>` (the password used to access the router for config) and `<WIFI-PASSWORD>` (the password used to connect to the router's Wi-Fi network) with your passwords of choice - *NB: DO NOT GIT COMMIT THE `config/confscript.rsc` FILE WITH THESE PASSWORDS INCLUDED*
@@ -53,9 +55,9 @@ The [setup file can be found here](config/confscript.rsc). We have used macs to 
 ```
 cd <dir you store your repos>/floodnet-gateway/config
 scp *.npk admin@192.168.88.1: #Copy updated firmware files to router
-ssh admin@192.168.88.1 '/system reboot' #Reboot after update
+ssh admin@192.168.88.1 '/system reboot' #Reboot after update - this can take a while until it is accessible again - you will need to reconnect to the routers WiFi
 ssh admin@192.168.88.1 '/system routerboard upgrade' #Update RouterBOARD firmware 
-ssh admin@192.168.88.1 '/system reboot' #After device is running after previous reboot, repeat to ensure LTE device is recognized
+ssh admin@192.168.88.1 '/system reboot' #After device is running after previous reboot, repeat to ensure LTE device is recognized - this can take a while until it is accessible again - you will need to reconnect to the routers WiFi
 scp confscript.rsc admin@192.168.88.1:flash #Copy config script to flash dir of router
 ssh admin@192.168.88.1 '/system reset-configuration run-after-reset=flash/confscript.rsc' #Reset router applying custom config
 ```
